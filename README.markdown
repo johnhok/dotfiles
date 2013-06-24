@@ -1,4 +1,4 @@
-# holman does dotfiles
+# johnhok's dotfiles
 
 ## dotfiles
 
