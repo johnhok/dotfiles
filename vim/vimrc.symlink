@@ -148,6 +148,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+"colorscheme candy
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -343,7 +344,7 @@ map <leader>pp :setlocal paste!<cr>
 " Load pathogen used to manage plugins
 execute pathogen#infect()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CmdLine(str)
