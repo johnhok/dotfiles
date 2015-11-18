@@ -1,3 +1,5 @@
+set nocompatible
+
 syntax on
 
 " Wrap gitcommit file types at the appropriate length
@@ -8,6 +10,7 @@ set number
 
 " Enable mouse
 set mouse=a
+set ttymouse=xterm2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
@@ -55,7 +58,7 @@ set mouse=a
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
-set history=700
+set history=1000
 
 " Enable filetype plugins
 filetype plugin on
@@ -87,6 +90,9 @@ set wildignore=*.o,*~,*.pyc
 
 "Always show current position
 set ruler
+
+"Show incomplete cmds down the bottom
+set showcmd    
 
 " Height of the command bar
 set cmdheight=2
@@ -127,6 +133,20 @@ set novisualbell
 set t_vb=
 set tm=500
 
+" Show tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+set wildmode=list:longest   "make cmdline tab completion similar to bash
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+
+set splitbelow
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -138,9 +158,11 @@ syntax enable
 if has("gui_running")
     set guioptions-=T
     set guioptions+=e
-    set t_Co=256
+    "set -g default-terminal "screen-256color"
     set guitablabel=%M\ %t
 endif
+
+set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -148,7 +170,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-"colorscheme candy
+"colorscheme onedark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -244,6 +266,8 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+" Allow cursor to wrap line endings
+set whichwrap+=<,>
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -345,6 +369,10 @@ map <leader>pp :setlocal paste!<cr>
 
 " Load pathogen used to manage plugins
 execute pathogen#infect()
+
+" vim-airline config
+let g:airline_powerline_fonts=1
+let g:airline_theme='luna'
 
 :""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
