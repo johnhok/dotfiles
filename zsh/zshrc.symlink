@@ -4,6 +4,8 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Developer
 
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
@@ -40,3 +42,5 @@ do
 done
 
 unset config_files
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -8,6 +8,25 @@ export GIT_EDITOR=vim
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
+
+##
+## hooking in other apps…
+##
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# z beats cd most of the time.
+#   github.com/rupa/z
+source ~/.dotfiles/z/z.sh
+source ~/.antigen.zsh
+
+antigen bundle extract
+antigen bundle robbyrussell/oh-my-zsh plugins/z
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
+antigen bundle tarruda/zsh-autosuggestions
+# antigen apply
+
 fpath=($ZSH/functions $fpath)
 
 autoload -U $ZSH/functions/*(:t)

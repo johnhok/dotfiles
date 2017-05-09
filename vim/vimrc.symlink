@@ -12,15 +12,18 @@ set number
 set mouse=a
 set ttymouse=xterm2
 
+set title " Show the filename in the window titlebar
+set undofile " Persistent Undo
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
-" Version: 
+" Version:
 "       5.0 - 29/05/12 15:43:36
 "
-" Blog_post: 
+" Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
 "
 " Awesome_version:
@@ -33,7 +36,7 @@ set ttymouse=xterm2
 " Syntax_highlighted:
 "       http://amix.dk/vim/vimrc.html
 "
-" Raw_version: 
+" Raw_version:
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
@@ -79,6 +82,13 @@ nmap <leader>w :w!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set autoindent " Copy indent from last line when starting new line
+set cursorline " Highlight current line
+set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
+set esckeys " Allow cursor keys in insert mode
+set foldcolumn=0 " Column to show folds
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -92,7 +102,7 @@ set wildignore=*.o,*~,*.pyc
 set ruler
 
 "Show incomplete cmds down the bottom
-set showcmd    
+set showcmd
 
 " Height of the command bar
 set cmdheight=2
@@ -107,7 +117,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -138,15 +148,25 @@ set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 "folding settings
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+"set foldmethod=indent   "fold based on indent
+"set foldnestmax=3       "deepest fold is 3 levels
+"set foldenable " Enable folding
+
+
+set foldcolumn=0 " Column to show folds
+set foldenable " Enable folding
+set foldlevel=0 " Close all folds by default
+set foldmethod=syntax " Syntax are used to specify folds
+set foldminlines=0 " Allow folding single lines
+set foldnestmax=5 " Set max fold nesting level
 
 set wildmode=list:longest   "make cmdline tab completion similar to bash
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 
 set splitbelow
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -163,9 +183,10 @@ if has("gui_running")
 endif
 
 set t_Co=256
+set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=utf-8 nobomb " BOM often causes trouble
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -251,7 +272,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -373,6 +394,9 @@ execute pathogen#infect()
 " vim-airline config
 let g:airline_powerline_fonts=1
 let g:airline_theme='luna'
+
+" fzf 
+set rtp+=~/.fzf
 
 :""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
